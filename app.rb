@@ -3,6 +3,10 @@ require 'sinatra/base'
 class BookmarkManager < Sinatra::Base
 
   get '/' do
-    "Hello world"
+    erb(:index)
+  end
+
+  get '/bookmarks' do
+    "BOOKMARKS!!!!"
   end
 end
