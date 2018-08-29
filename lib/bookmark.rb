@@ -1,4 +1,5 @@
 require 'pg'
+require 'uri'
 
 class Bookmark
 
@@ -15,13 +16,19 @@ class Bookmark
   end
 
   def self.create(url)
+    return false unless is_url?(url)
     if ENV['ENVIRONMENT'] == 'test'
       con = PG.connect :dbname => 'bookmark_manager_test'
     else
       con = PG.connect :dbname => 'bookmark_manager'
     end
     con.exec("INSERT INTO bookmarks (url) VALUES('#{url}')")
+  end
 
+  private 
+
+  def self.is_url?(url)
+    url =~ /\A#{URI::regexp(['http', 'https'])}\z/
   end
 
 end

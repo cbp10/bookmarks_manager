@@ -16,4 +16,11 @@ describe Bookmark do
       expect(bookmarks).to include "http://www.google.com"
     end
   end
+
+  describe '.create' do
+    it 'does not create a new bookmark if URL is invalid' do
+      Bookmark.create('ww,bb,')
+      expect(Bookmark.all).not_to include 'www,bb,'
+    end
+  end
 end
