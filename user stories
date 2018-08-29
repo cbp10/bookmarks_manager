@@ -2,5 +2,9 @@ As a web surfer
 so that I can remember my favourite sites
 I would like to see a list of bookmarks
 
+As a web surfer
+so that I can add to my bookmarks
+I would like to be able to add a new url
+
 Bookmark Class
   .all
